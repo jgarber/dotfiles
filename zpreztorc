@@ -1,0 +1,42 @@
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/runcoms/zpreztorc" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprezto/runcoms/zpreztorc"
+fi
+
+# Set the Prezto modules to load (browse modules).
+# The order matters.
+zstyle ':prezto:load' pmodule \
+  'environment' \
+  'terminal' \
+  'editor' \
+  'history' \
+  'directory' \
+  'spectrum' \
+  'utility' \
+  'completion' \
+  'archive' \
+  'fasd' \
+  'git' \
+  'osx' \
+  'ruby' \
+  'rails' \
+  'syntax-highlighting' \
+  'history-substring-search' \
+  'ssh' \
+  'prompt'
+
+zstyle ':prezto:module:editor' key-bindings 'vi'
+
+#Load themes from user's custom prompts (themes) in ~/.zsh.prompts
+autoload promptinit
+fpath=($HOME/.zsh.prompts $fpath)
+promptinit
+zstyle ':prezto:module:prompt' theme 'kylewest'
+
+# Auto switch the Ruby version on directory change.
+zstyle ':prezto:module:ruby:chruby' auto-switch 'yes'
+
+# Set the SSH identities to load into the agent.
+zstyle ':prezto:module:ssh:load' identities 'id_rsa' 'github_rsa'
+
+# Auto set the tab and window titles.
+zstyle ':prezto:module:terminal' auto-title 'yes'
