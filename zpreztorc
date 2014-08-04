@@ -24,8 +24,6 @@ zstyle ':prezto:load' pmodule \
   'ssh' \
   'prompt'
 
-zstyle ':prezto:module:editor' key-bindings 'vi'
-
 #Load themes from user's custom prompts (themes) in ~/.zsh.prompts
 autoload promptinit
 fpath=($HOME/.zsh.prompts $fpath)

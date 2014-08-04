@@ -1,0 +1,71 @@
+#!/usr/bin/env bash
+
+# See https://github.com/promptworks/laptop
+
+packages=(
+node
+phantomjs
+chromedriver
+ssh-copy-id
+)
+for package in "${packages[@]}"
+do
+  brew install $package
+done
+
+# Homebrew-cask
+brew tap caskroom/versions
+
+# Native apps
+apps=(
+airfoil
+alfred
+arq
+audacity
+charles
+cyberduck
+dropbox
+evernote
+firefox
+fluid
+google-chrome
+google-chrome-canary
+google-drive
+hipchat
+imagealpha
+istumbler
+iterm2
+keyremap4macbook
+kindle
+macvim
+mailplane
+marked
+moom
+paparazzi
+rdio
+screenflow
+screenhero
+sourcetree
+things
+vagrant
+virtualbox
+vlc
+)
+for app in "${apps[@]}"
+do
+  brew cask install $app
+done
+
+brew cask alfred link
+
+rubies=( '2.0.0' '2.1.1' )
+for local_ruby_version in ${rubies[@]}; do
+  if ! is_ruby_version_installed $local_ruby_version; then
+    fancy_echo "Installing Ruby $ruby ..."
+      ruby_install $local_ruby_version
+      chruby-exec $local_ruby_version gem update --system
+      chruby-exec $local_ruby_version gem install bundler --no-document --pre
+  fi
+done
+
+defaults write com.apple.menuextra.battery ShowPercent -string "YES"
