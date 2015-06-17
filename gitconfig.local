@@ -1,6 +1,8 @@
+[gitreview]
+       username = jason.promptworks
 [user]
-	name = Jason Garber
-	email = jg@jasongarber.com
+       name = Jason Garber
+       email = jason@promptworks.com
 [github]
 	user = jgarber
 [mergetool]
@@ -41,7 +43,7 @@ new = green bold
   untracked = cyan
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
+	path =
 [mergetool "sourcetree"]
 	cmd = /opt/homebrew-cask/Caskroom/sourcetree/1.9.1/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
